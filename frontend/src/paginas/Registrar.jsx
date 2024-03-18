@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom"
+import axios from 'axios'
 import Alerta from '../components/Alerta'
 
 const Registrar = () => {
@@ -9,25 +10,41 @@ const Registrar = () => {
     const [ password, setPassword ] = useState('')
     const [ repetirPassword, setRepetirPassword ] = useState('')
 
-    const [ alerta, SetAlerta] = useState({})
+    const [ alerta, setAlerta] = useState({})
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
       e.preventDefault();
       if ([nombre, email, password, repetirPassword].includes('')) {
-        SetAlerta({ msg: 'Hay campos vacios', error: true})
+        setAlerta({ msg: 'Hay campos vacios', error: true})
         return;
       }
       if (password !== repetirPassword) {
-        SetAlerta({ msg: 'Los password son diferentes', error: true})
+        setAlerta({ msg: 'Los password son diferentes', error: true})
         return;
       }
       if (password.length < 6) {
-        SetAlerta({ msg: 'El password es muy corto, agrega minimo 6 caracteres', error: true})
+        setAlerta({ msg: 'El password es muy corto, agrega minimo 6 caracteres', error: true})
         return;
       }
 
-      SetAlerta({})
+      
+      setAlerta({})
+
       // Crear al usuario en la Api
+      try {
+        const url = "http://localhost:3300/api/veterinarios"
+        await axios.post(url, { nombre, email, password })
+        setAlerta({
+          msg: 'Creado Correctamente, revisa tu email',
+          error: false
+        })
+      } catch (error) {
+        setAlerta({
+          msg: error.response.data.msg,
+          error: true
+        })
+      }
+
     }
 
     const { msg } = alerta
