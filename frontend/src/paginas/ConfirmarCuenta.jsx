@@ -16,7 +16,7 @@ const ConfirmarCuenta = () => {
       console.log("Efecto ejecutado");
       const confirmarCuenta2 = async () => {
         try {
-          const url = `http://localhost:3300/api/veterinarios/confirmar/${id}`
+          const url = `${import.meta.env.VITE_BACKEND_URL}/api/veterinarios/confirmar/${id}`
           const { data } = await axios(url)
           setCuentaCormirmada(true)
           setAlerta({ 
