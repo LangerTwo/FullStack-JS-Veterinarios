@@ -51,7 +51,7 @@ const confirmar = async (req, res) => {
         usuarioConfirmar.confirmado = true
         await usuarioConfirmar.save()
 
-        res.json({msg: "Usuario Confirmado Correctamente"})
+        res.status(200).json({ msg: "Usuario Confirmado Correctamente" })
     } catch (error) {
         console.log(error)
     }

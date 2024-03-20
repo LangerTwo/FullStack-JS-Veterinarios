@@ -1,30 +1,27 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import axios from 'axios'
 import Alerta from "../components/Alerta";
 
 const ConfirmarCuenta = () => {
-    const [cuentaCormirmada, setCuentaCormirmada] = useState(false);
-    const [cargando, setCargando] = useState(true);
+    const [cuentaCormirmada, setCuentaCormirmada] = useState(false)
+    const [cargando, setCargando] = useState(true)
     const [ alerta, setAlerta] = useState({})
 
-    const params = useParams();
-    const { id } = params;
+    const params = useParams()
+    const { id } = params
 
+    
     useEffect(() => {
-      const confirmarCuenta = async () => {
+      console.log("Efecto ejecutado");
+      const confirmarCuenta2 = async () => {
         try {
-
           const url = `http://localhost:3300/api/veterinarios/confirmar/${id}`
           const { data } = await axios(url)
-          console.log(data.msg)
-          // 1hp9mu6m9qaifjntfp1g
           setCuentaCormirmada(true)
-          setAlerta({
-            msg: data.msg,
-            error: false
+          setAlerta({ 
+            msg: data.msg
           })
-
         } catch (error) {
           setAlerta({
             msg: error.response.data.msg,
@@ -34,8 +31,8 @@ const ConfirmarCuenta = () => {
 
         setCargando(false)
       }
-      confirmarCuenta();
-    }, [])
+      confirmarCuenta2();
+    }, [id])
   
     return (
       <>
@@ -48,10 +45,13 @@ const ConfirmarCuenta = () => {
 
         <div className="mt-20 md:mt-5 shadow-lg px-5 py-5 rounded-xl bg-white">
          {!cargando && <Alerta alerta={alerta}/>}
+         {cuentaCormirmada && (
+          <Link className="block text-center my-5 text-gray-500">Inicia Sesión</Link>
+         )}
        </div>
 
       </>
     )
-  }
+}
   
-  export default ConfirmarCuenta
+export default ConfirmarCuenta
