@@ -46,7 +46,7 @@ const ConfirmarCuenta = () => {
         <div className="mt-20 md:mt-5 shadow-lg px-5 py-5 rounded-xl bg-white">
          {!cargando && <Alerta alerta={alerta}/>}
          {cuentaCormirmada && (
-          <Link className="block text-center my-5 text-gray-500">Inicia Sesión</Link>
+          <Link to="/" className="block text-center my-5 text-gray-500">Inicia Sesión</Link>
          )}
        </div>
 
