@@ -11,7 +11,7 @@ const ConfirmarCuenta = () => {
     const params = useParams()
     const { id } = params
 
-    
+    // e.prevenDefault();
     useEffect(() => {
       console.log("Efecto ejecutado");
       const confirmarCuenta2 = async () => {
@@ -34,6 +34,7 @@ const ConfirmarCuenta = () => {
       confirmarCuenta2();
     }, [id])
   
+  const { msg } = alerta
     return (
       <>
         
