@@ -35,7 +35,7 @@ const ConfirmarCuenta = () => {
       confirmarCuenta2();
     }, [])
   
-    console.log([id])
+    // console.log([id])
     return (
       <>
         
