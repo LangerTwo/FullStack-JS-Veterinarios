@@ -7,7 +7,7 @@ import ConfirmarCuenta from './paginas/ConfirmarCuenta.jsx';
 import NuevoPassword from './paginas/NuevoPassword.jsx';
 
 function App() {
-  // console.log(import.meta.env.VITE_BACKEND_URL)
+  console.log(import.meta.env.VITE_BACKEND_URL)
 
   return (
     <BrowserRouter>

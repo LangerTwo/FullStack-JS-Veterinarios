@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom"
 import Alerta from "../components/Alerta"
-import clienteAxios from "../config/axios"
+import clienteAxios from "../config/axios.jsx"
+import axios from "axios";
 
 const ConfirmarCuenta = () => {
     const [cuentaCormirmada, setCuentaCormirmada] = useState(false)
@@ -32,9 +33,9 @@ const ConfirmarCuenta = () => {
         setCargando(false)
       }
       confirmarCuenta2();
-    }, [id])
+    }, [])
   
-  const { msg } = alerta
+    console.log([id])
     return (
       <>
         
