@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import AuthLayout from './layout/AuthLayout.jsx';
+import RutaProtegida from './layout/RutaProtegida.jsx';
 import Login from './paginas/Login.jsx';
 import Registrar from './paginas/Registrar.jsx';
 import OlvidePassword from './paginas/OlvidePassword.jsx';
 import ConfirmarCuenta from './paginas/ConfirmarCuenta.jsx';
 import NuevoPassword from './paginas/NuevoPassword.jsx';
+import AdministrarPacientes from './paginas/AdministrarPacientes.jsx';
 
 import { AuthProvider } from './context/AuthProvider';
 
@@ -23,8 +25,8 @@ function App() {
               </Route>
 
               {/* estas rutas requieren que usuario este autenticado */}
-              <Route>
-
+              <Route path="/admin" element={<RutaProtegida />}>
+                <Route index element={<AdministrarPacientes />}/>
               </Route>
           </Routes>
       </AuthProvider>
