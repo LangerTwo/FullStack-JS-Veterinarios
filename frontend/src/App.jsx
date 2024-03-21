@@ -21,6 +21,11 @@ function App() {
                   <Route path='olvide-password/:token' element={<NuevoPassword />}/>
                   <Route path='confirmar/:id' element={<ConfirmarCuenta />}/>
               </Route>
+
+              {/* estas rutas requieren que usuario este autenticado */}
+              <Route>
+
+              </Route>
           </Routes>
       </AuthProvider>
     </BrowserRouter> 
