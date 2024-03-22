@@ -14,7 +14,7 @@ const Headers = () => {
                 <Link to="/admin" className="text-white text-sm uppercase font-bold hover:text-indigo-300">
                     Pacientes
                 </Link>
-                <Link to="/admin" className="text-white text-sm uppercase font-bold hover:text-indigo-300">
+                <Link to="/perfil" className="text-white text-sm uppercase font-bold hover:text-indigo-300">
                     Perfil
                 </Link>
 
