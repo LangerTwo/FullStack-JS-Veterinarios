@@ -1,7 +1,7 @@
 import { Outlet, Navigate } from "react-router-dom"
 import Header from '../components/Headers'
 import Footer from "../components/Footer"
-import useAuth from "../context/useAuth"
+import useAuth from "../hooks/useAuth"
 
 const RutaProtegida = () => {
     const { auth, cargando } = useAuth()

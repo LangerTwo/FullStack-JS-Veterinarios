@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Alerta from "../components/Alerta"
-import useAuth from "../context/useAuth"
+import useAuth from "../hooks/useAuth"
 import clienteAxios from "../config/axios"
 
 const login = () => {
