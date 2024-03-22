@@ -9,12 +9,14 @@ import NuevoPassword from './paginas/NuevoPassword.jsx';
 import AdministrarPacientes from './paginas/AdministrarPacientes.jsx';
 
 import { AuthProvider } from './context/AuthProvider';
+import { PacientesProvider } from './context/PacienteProvider';
 
 function App() {
   // console.log(import.meta.env.VITE_BACKEND_URL)
   return (
     <BrowserRouter>
-      <AuthProvider>        
+      <AuthProvider>
+        <PacientesProvider>        
           <Routes>
               <Route path="/" element={<AuthLayout />} >
                   <Route index element={<Login />} />
@@ -29,6 +31,7 @@ function App() {
                 <Route index element={<AdministrarPacientes />}/>
               </Route>
           </Routes>
+        </PacientesProvider>     
       </AuthProvider>
     </BrowserRouter> 
   )
