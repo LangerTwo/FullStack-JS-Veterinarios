@@ -86,7 +86,7 @@ const Registrar = () => {
                 <input type="password" placeholder="Repite tu Password" className="border w-full p-3 mt-3 bg-gray-50 rounded-xl" value={repetirPassword} onChange={ e => setRepetirPassword(e.target.value)}/>
               </div>
 
-              <input type="submit" value="Crear Cuenta" className="bg-indigo-700 w-full py-3 px-10 rounded-xl text-white uppercase font-bold mt-5 hover:cursor-pointer md:w-auto" />
+              <input type="submit" value="Crear Cuenta" className="bg-indigo-700 w-full py-3 px-10 rounded-xl text-white uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-600 md:w-auto" />
           </form>
 
           <nav className="mt-5 lg:flex lg:justify-between">
