@@ -6,6 +6,7 @@ const PacientesContext = createContext()
 export const PacientesProvider = ({children}) => {
 
     const [pacientes, setPacientes] = useState([])
+    const [paciente, setPaciente] = useState({})
 
     useEffect(() => {
         const obtnerPacientes = async () => {
@@ -30,6 +31,13 @@ export const PacientesProvider = ({children}) => {
     }, [])
 
     const guardarPaciente = async (paciente) => {
+
+        if (paciente.id) {
+            console.log('editando...')
+        } else {
+            console.log('nuevo')
+        }
+
         try {
             const token = localStorage.getItem('token')
             const config = {
@@ -46,8 +54,13 @@ export const PacientesProvider = ({children}) => {
         }
     }
 
+    const seEdicion = (paciente) => {
+        // console.log('editando ', id)
+        setPaciente(paciente)
+    }
+
     return (
-        <PacientesContext.Provider value={{pacientes, guardarPaciente}}>
+        <PacientesContext.Provider value={{pacientes, guardarPaciente, seEdicion, paciente}}>
             {children}
         </PacientesContext.Provider>
     )
