@@ -37,6 +37,7 @@ export const PacientesProvider = ({children}) => {
         } else {
             console.log('nuevo')
         }
+        return
 
         try {
             const token = localStorage.getItem('token')
