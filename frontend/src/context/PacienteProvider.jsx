@@ -32,26 +32,31 @@ export const PacientesProvider = ({children}) => {
 
     const guardarPaciente = async (paciente) => {
 
-        if (paciente.id) {
-            console.log('editando...')
-        } else {
-            console.log('nuevo')
-        }
-        return
-
-        try {
-            const token = localStorage.getItem('token')
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
-                }
+        console.log(paciente)
+        const token = localStorage.getItem('token')
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
             }
-            const { data } = await clienteAxios.post('/pacientes', paciente, config)
-            const { createdAt, updatedAt, __v, ...pacienteAlmacenado } = data
-            setPacientes([pacienteAlmacenado, ...pacientes])
-        } catch (error) {
-            console.log(error.response.data.msg)
+        }
+
+        if (paciente.id) {
+            try {
+                const { data } = await clienteAxios.put(`/pacientes/${paciente.id}`, paciente, config)
+                const pacienteActualizado = pacientes.map( pacienteState => pacienteState._id === data._id ? data : pacienteState )
+                setPacientes(pacienteActualizado)
+            } catch (error) {
+                console.log(error)
+            }
+        } else {
+            try {
+                const { data } = await clienteAxios.post('/pacientes', paciente, config)
+                const { createdAt, updatedAt, __v, ...pacienteAlmacenado } = data
+                setPacientes([pacienteAlmacenado, ...pacientes])
+            } catch (error) {
+                console.log(error.response.data.msg)
+            }
         }
     }
 
@@ -59,6 +64,8 @@ export const PacientesProvider = ({children}) => {
         // console.log('editando ', id)
         setPaciente(paciente)
     }
+
+    
 
     return (
         <PacientesContext.Provider value={{pacientes, guardarPaciente, seEdicion, paciente}}>

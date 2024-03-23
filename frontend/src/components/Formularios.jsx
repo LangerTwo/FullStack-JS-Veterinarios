@@ -37,8 +37,16 @@ const Formularios = () => {
             return;
         }
 
-        setAlerta({})
         guardarPaciente({nombre, propietario, email, fecha, sintomas, id})
+        setAlerta({
+            msg: 'Guardado Correctamente'
+        })
+        setNombre('')
+        setPropietario('')
+        setEmail('')
+        setFecha('')
+        setSintomas('')
+        setID('')
     }
 
     const { msg } = alerta
