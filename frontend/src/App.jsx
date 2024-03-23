@@ -8,6 +8,9 @@ import ConfirmarCuenta from './paginas/ConfirmarCuenta.jsx';
 import NuevoPassword from './paginas/NuevoPassword.jsx';
 import AdministrarPacientes from './paginas/AdministrarPacientes.jsx';
 
+import EditarPerfil from './components/EditarPerfil.jsx';
+import CambiarPassword from './components/cambiarPassword.jsx';
+
 import { AuthProvider } from './context/AuthProvider';
 import { PacientesProvider } from './context/PacienteProvider';
 
@@ -28,7 +31,9 @@ function App() {
 
               {/* estas rutas requieren que usuario este autenticado */}
               <Route path="/admin" element={<RutaProtegida />}>
-                <Route index element={<AdministrarPacientes />}/>
+                <Route index element={<AdministrarPacientes />} />
+                <Route path="perfil" element={<EditarPerfil />} />
+                <Route path="cambiar-password" element={<CambiarPassword />} />
               </Route>
           </Routes>
         </PacientesProvider>     
