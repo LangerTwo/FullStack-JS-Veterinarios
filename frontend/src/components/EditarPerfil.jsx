@@ -5,7 +5,7 @@ import Alerta from '../components/Alerta'
 
 const EditarPerfil = () => {
 
-  const { auth } = useAuth()
+  const { auth, actualizarPerfil } = useAuth()
   const [ perfil, setPerfil ] = useState({})
   const [ alerta, setAlerta ] = useState({})
   
@@ -15,11 +15,15 @@ const EditarPerfil = () => {
   
   const handleSubmit = e => {
     e.preventDefault()
-
     const { nombre, email } = perfil
     if ([nombre, email].includes('')) {
-      
+      setAlerta({
+        msg: 'Email y Nombre son obligatorios',
+        error: true
+      })
+      return;
     }
+    actualizarPerfil(perfil)
   }
 
   const { msg } = alerta
