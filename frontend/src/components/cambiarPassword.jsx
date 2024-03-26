@@ -13,7 +13,7 @@ const cambiarPassword = () => {
     pwd_nuevo: ''
   })
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (Object.values(password).some(campo => campo === '')) {
       setAlerta({
@@ -30,7 +30,8 @@ const cambiarPassword = () => {
       })
       return
     }
-    guardarPassword(password)
+    const respuesta = await guardarPassword(password)
+    setAlerta(respuesta)
   }
 
   const { msg } = alerta
